@@ -1,0 +1,22 @@
+include ../PUG-Bootstrap/_bootstrap
+html
+    head
+        title= 'poster'
+body
+    .row(style="margin:0;")
+        .col-md-2
+        .col-md-8
+            form(class="panel panel-danger", action="/posts", method="POST")
+                .panel-heading
+                    input( type="text", name='header', class="form-control", placeholder="Post title")
+                .panel-body
+                    textarea( type="text", name='body', class="form-control", placeholder="Post text")
+                .panel-footer
+                    input( type="text", name='date', class="form-control", placeholder="date")
+                button(type="submit" class="btn btn-success") Додати
+            each post in data.reverse()
+                div(class="panel panel-info")
+                    div(class="panel-heading") #{post.header}
+                    div(class="panel-body") #{post.body}
+                    div(class="panel-footer") #{post.date}
+        .col-md-2
